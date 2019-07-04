@@ -1,7 +1,14 @@
 <?php
   include_once 'autoload.php';
   
-  if(empty(Session::get('email'))) URL::redirect("login.php"); 
+  if(empty(Session::get('email'))) URL::redirect("login.php");
+
+  $ga = new GoogleAuthenticator();
+  $email = Session::get('email');
+  $data = json_decode(file_get_contents(DATA_USER),TRUE);
+  $userInfo = $data[$email];
+  $secretCode = $userInfo['secret'];
+  $qrCodeUrl  = $ga->getQRCodeGoogleUrl($userInfo['email'], $secretCode, 'Demo 2FA Code');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +19,57 @@
     <?php include_once 'html/nav.php'; ?>
     <div class="container">
       <div class="row">
-        <?php echo Session::get('email'); ?>
+        <div class="col-md-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">Image QR Code</div>
+            <div class="panel-body">
+              <div class="qr-code text-center">
+                <img src='<?php echo $qrCodeUrl;?>' />
+              </div>
+              <div class="two-fa-code">
+                <input type="text" name="secret" id="secret" disabled value="<?php echo $secretCode;?>" class="form-control">
+              </div>
+              <div style="margin-top:10px" class="guide">
+                <p>
+                  <strong>Guide :</strong> To enable service 2 FA code you need to scan this image into app or enter secret code into app
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">Setting 2FA Code</div>
+            <div class="panel-body">
+              <form action="" method="POST">
+                <div class="form-group">
+                  <label for="Setting">Enabled 2FA Code when login</label>
+                  <div class="radio">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <label>
+                        <input type="radio" name="setting" id="optionsRadios0" value="1">
+                        Yes
+                        </label>
+                      </div>
+                      <div class="col-md-2">
+                        <label>
+                        <input type="radio" name="setting" id="optionsRadios1" value="0">
+                        No
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="Code">2FA Code</label>
+                  <input type="text" name="code" class="form-control" id="2fa-code" placeholder="2FA Code">
+                </div>
+                <input type="submit" name="submit" class="btn btn-default" value="Submit">
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <?php include_once 'html/script.php'; ?>

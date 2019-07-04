@@ -44,3 +44,7 @@ Tìm hiểu cách sử dụng Class GoogleAuthenticator
   Khi Login thì có 2 trường hợp xảy ra đó là:
     1. User có setting là unit/off -> Chỉ cần nhập đúng email và pass
     2. setting có giá trị là on -> Phải nhập đúng email, pass và đúng secret
+- Setting:
+  Khi đăng ký thành viên thì ta có 1 mã secret và setting lúc này ở trạng thái là init
+  Từ mã secret -> sinh ra được 1 tấm hình mã QR code
+  Hiển thị tấm hình QR code và mã secret lên màn hình setting sau khi người dùng đăng nhập
