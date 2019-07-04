@@ -9,6 +9,27 @@
   $userInfo = $data[$email];
   $secretCode = $userInfo['secret'];
   $qrCodeUrl  = $ga->getQRCodeGoogleUrl($userInfo['email'], $secretCode, 'Demo 2FA Code');
+
+  $msg = "";
+  $type = "";
+  if (!empty($_POST['submit'])) {
+    if (empty($_POST['code'])) {
+      $msg = 'Please enter code!';
+      $type = 'error';
+    } else {
+      $checkResult = $ga->verifyCode($secretCode, $_POST['code']);
+      if ($checkResult) {
+        $userInfo['setting'] = $_POST['setting'];
+        $data[$email] = $userInfo;
+        file_put_contents(DATA_USER, json_encode($data));
+        $msg = 'Update successful';
+        $type = 'success';
+      } else {
+        $msg = 'Code is not valid';
+        $type = 'error';
+      }
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +62,8 @@
           <div class="panel panel-primary">
             <div class="panel-heading">Setting 2FA Code</div>
             <div class="panel-body">
+
+              <?php echo HTMLHelper::showMessage($msg, $type) ?>
               <form action="" method="POST">
                 <div class="form-group">
                   <label for="Setting">Enabled 2FA Code when login</label>
