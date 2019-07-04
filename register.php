@@ -23,9 +23,14 @@
             $msg = 'Email is exist';
             $type = 'error';
           } else {
+            $ga = new GoogleAuthenticator();
+            $secret = $ga->createSecret();
+
             $data[$email]['email'] = $email;
             $data[$email]['password'] = $password;
             $data[$email]['fullName'] = $fullName;
+            $data[$email]['secret'] = $secret; 
+            $data[$email]['setting'] = 'init';
 
             file_put_contents(DATA_USER, json_encode($data));
             $msg = 'Register successfully. Please access <a href="index.php">here</a> to redirect page login';

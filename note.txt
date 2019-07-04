@@ -17,7 +17,6 @@
 	Kiểm tra nếu mà file đang thực thi nó bằng key nào trong menus thì sẽ active menu đó
 
 ===================================== Tìm hiểu Google Authentication =====================================
-
 Keyword: PHP Class for handling Google Authenticator 2-factor authentication
 Cài thêm Extension google authenticator và Authenticator cho Chrome
 Tìm hiểu cách sử dụng Class GoogleAuthenticator
@@ -28,3 +27,14 @@ Tìm hiểu cách sử dụng Class GoogleAuthenticator
 	-> Thông qua phương thức verifyCode() 2 giá trị $secretCode để sinh ra mã QRcode và giá trị mình nhập vào
 	Giá trị mặc định của tham số thứ 3 $discrepancy trong phương thức verifyCode() là 1, có nghĩa là nó có thể chấp nhận cả mã
 		hiện tại và mã của 30s trước
+
+===================================== Bảo mật đăng nhập với Google Authentication =====================================
+- Register:
+	Tích hợp cơ chế của Google authenticator vào cho phần đăng nhập
+	Đối với mỗi email thì có 1 mã secretCode được sinh ra khi đăng ký
+	Giá trị setting: Có 3 giá trị
+		init: Vừa đăng ký thành viên xong
+			Ban đầu khi đăng ký xong thì giá trị của setting được thiết lập là init
+		1(on): Sau khi đăng nhật -> vào trong phần setting để thiết lập giá trị của setting là 1
+			Khi giá trị là 1 thì khi người dùng đăng nhập phải nhập thêm mã FA code
+		0(off): Khi đăng nhập thì không cần nhập thêm FA code
