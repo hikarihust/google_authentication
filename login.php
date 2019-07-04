@@ -12,8 +12,23 @@
       $data = json_decode(file_get_contents(DATA_USER), TRUE);
         $userInfo = $data[$email];
         if (($userInfo['email'] === $email) && ($userInfo['password'] === $password)) {
-          Session::set('email', $email);
-          URL::redirect('setting.php');
+          if ($userInfo['setting'] === 'on') {
+            if (!empty($_POST['code'])) {
+              $ga = new GoogleAuthenticator();
+              $checkResult = $ga->verifyCode($userInfo['secret'], $_POST['code']);
+              if ($checkResult) {
+                Session::set('email', $email);
+                URL::redirect('setting.php');
+              } else {
+                $error = 'Code is not valid. Please try again!';
+              }
+            } else {
+              $error = 'Please enter code!';
+            }
+          } else {
+            Session::set('email', $email);
+            URL::redirect('setting.php');
+          }
         } else {
           $error = 'Login is failed';
         }
@@ -47,6 +62,9 @@
                   </div>
                   <div class="form-group">
                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" placeholder="2FA Code" name="code" type="text" value="">
                   </div>
                   <input name="submit" type="submit" value="Login" class="btn btn-primary">
                 </fieldset>

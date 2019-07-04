@@ -18,7 +18,7 @@
 
 ===================================== Tìm hiểu Google Authentication =====================================
 Keyword: PHP Class for handling Google Authenticator 2-factor authentication
-Cài thêm Extension google authenticator và Authenticator cho Chrome
+Cài thêm Extension 'google authenticator' và 'Authenticator' cho Chrome
 Tìm hiểu cách sử dụng Class GoogleAuthenticator
 	createSecret(): Tạo ra 1 chuỗi secret, từ key này thì sẽ có được 1 dãy số, dãy số này sẽ tự động thay đổi sau 30s
 	getQRCodeGoogleUrl(): Thay vì chuỗi trên thì từ 1 chuỗi bất kỳ secretCode cho trước ta có thể sinh ra 1 tấm hình QRcode
@@ -38,3 +38,9 @@ Tìm hiểu cách sử dụng Class GoogleAuthenticator
 		1(on): Sau khi đăng nhật -> vào trong phần setting để thiết lập giá trị của setting là 1
 			Khi giá trị là 1 thì khi người dùng đăng nhập phải nhập thêm mã FA code
 		0(off): Khi đăng nhập thì không cần nhập thêm FA code
+- Login:
+  Tích hợp phần kiểm tra của Google authentication
+	Thêm 1 ô input nữa cho người dùng nhập vào mã code của họ
+  Khi Login thì có 2 trường hợp xảy ra đó là:
+    1. User có setting là unit/off -> Chỉ cần nhập đúng email và pass
+    2. setting có giá trị là on -> Phải nhập đúng email, pass và đúng secret
