@@ -48,13 +48,13 @@
                     <div class="row">
                       <div class="col-md-2">
                         <label>
-                        <input type="radio" name="setting" id="optionsRadios0" value="1">
+                        <input <?php echo ($userInfo['setting'] === 'on' ? 'checked' : '') ?> type="radio" name="setting" id="optionsRadios0" value="on">
                         Yes
                         </label>
                       </div>
                       <div class="col-md-2">
                         <label>
-                        <input type="radio" name="setting" id="optionsRadios1" value="0">
+                        <input <?php echo (($userInfo['setting'] === 'off' || $userInfo['setting'] === 'init') ? 'checked' : '') ?> type="radio" name="setting" id="optionsRadios1" value="off">
                         No
                         </label>
                       </div>

@@ -48,3 +48,5 @@ Tìm hiểu cách sử dụng Class GoogleAuthenticator
   Khi đăng ký thành viên thì ta có 1 mã secret và setting lúc này ở trạng thái là init
   Từ mã secret -> sinh ra được 1 tấm hình mã QR code
   Hiển thị tấm hình QR code và mã secret lên màn hình setting sau khi người dùng đăng nhập
+  Hoàn thiện cho 2 nút radio, khi vào màn hình setting thì radio sẽ được chọn sẵn 1 giá trị là Yes hoặc No
+  Khi người dùng vừa đăng ký thì giá trị của setting là init -> Giá trị được chọn của radio là No
