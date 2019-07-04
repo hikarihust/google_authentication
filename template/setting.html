@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <title>Setting</title>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+            <a class="navbar-brand" href="#">Demo Google Authenticator</a>
+            </div>
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="setting.php">Setting</a></li>
+            <li class=""><a href="logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Image QR Code</div>
+                    <div class="panel-body">
+                        
+                        <div class="qr-code text-center">
+                            <img src='https://chart.googleapis.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth%3A%2F%2Ftotp%2Fnvhd%40gmail.com%3Fsecret%3DHDA2IFNH7FXUEHYB%26issuer%3DDemo%2B2FA%2BCode' />
+                        </div>
+                        <div class="two-fa-code">
+                            <input type="text" name="secret" id="secret" disabled value="3DHDA2IFNH7FXUEHYB" class="form-control">
+                        </div>
+                        <div style="margin-top:10px" class="guide">
+                            <p>
+                                <strong>Guide :</strong> To enable service 2 FA code you need to scan this image into app or enter secret code into app
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Setting 2FA Code</div>
+                    <div class="panel-body">
+                        <form action="" method="POST">
+                            <div class="form-group">
+                                <label for="Setting">Enabled 2FA Code when login</label>
+                                <div class="radio">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>
+                                            <input type="radio" name="setting" id="optionsRadios0" value="1">
+                                            Yes
+                                            </label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>
+                                            <input type="radio" name="setting" id="optionsRadios1" value="0">
+                                            No
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Code">2FA Code</label>
+                                <input type="text" name="code" class="form-control" id="2fa-code" placeholder="2FA Code">
+                            </div>
+                            <input type="submit" name="submit" class="btn btn-default" value="Submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+</body>
+</html>
