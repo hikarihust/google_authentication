@@ -44,17 +44,25 @@
           <div class="panel panel-primary">
             <div class="panel-heading">Image QR Code</div>
             <div class="panel-body">
-              <div class="qr-code text-center">
-                <img src='<?php echo $qrCodeUrl;?>' />
-              </div>
-              <div class="two-fa-code">
-                <input type="text" name="secret" id="secret" disabled value="<?php echo $secretCode;?>" class="form-control">
-              </div>
-              <div style="margin-top:10px" class="guide">
-                <p>
-                  <strong>Guide :</strong> To enable service 2 FA code you need to scan this image into app or enter secret code into app
-                </p>
-              </div>
+              <?php if ($userInfo['setting'] === 'init') { ?>
+                <div class="qr-code text-center">
+                  <img src='<?php echo $qrCodeUrl;?>' />
+                </div>
+                <div class="two-fa-code">
+                  <input type="text" name="secret" id="secret" disabled value="<?php echo $secretCode;?>" class="form-control">
+                </div>
+                <div style="margin-top:10px" class="guide">
+                  <p>
+                    <strong>Guide :</strong> To enable service 2 FA code you need to scan this image into app or enter secret code into app
+                  </p>
+                </div>
+              <?php } else { ?>
+                <div style="margin-top:10px" class="guide">
+                  <p>
+                    You had enabled 2FA Code. Should we hide image QR Code and Secret Code 
+                  </p>
+                </div>
+              <?php } ?>
             </div>
           </div>
         </div>

@@ -54,3 +54,6 @@ Tìm hiểu cách sử dụng Class GoogleAuthenticator
   Sau khi người dùng đăng ký xong thì user đó có giá trị setting là init
   Khi người dùng setting cho giá trị setting xong rồi thì sẽ ẩn thông tin mã code đi mà chỉ hiện thị thông
     tin form mà thôi
+  Trong trường hợp giá trị setting của người dùng là init có nghĩa là tài khoản đó vừa được tạo
+  Nếu giá trị của setting là on hoặc off có nghĩa là người dùng đã scan mã code để Submit rồi
+  -> Chỉ khi nào khi setting là init thì mới show ra tấm hình và mã code còn on, off thì không cần show
