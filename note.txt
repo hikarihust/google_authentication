@@ -1,8 +1,12 @@
 ===================================== Xây dựng chức năng Register Login Logout =====================================
-autoload.php: Khi khởi tạo 1 đối tượng nào đó thì Class của đối tượng đó sẽ tự động được lạp vào thông qua phương thức
-	__autoload()
+- Register:
+	autoload.php: Khi khởi tạo 1 đối tượng nào đó thì Class của đối tượng đó sẽ tự động được lạp vào thông qua phương thức
+		__autoload()
+	json_decode ( string $json [, bool $assoc = FALSE]
+		Khi $assoc được set là TRUE thì json sau khi được decode sẽ được xem dưới dạng mảng 
+	Cấu trúc tập tin user.json là mỗi key thì lấy luôn địa chỉ email để làm key, value lưu các thông tin email, password
+		và fullname
 
-json_decode ( string $json [, bool $assoc = FALSE]
-	Khi $assoc được set là TRUE thì json sau khi được decode sẽ được xem dưới dạng mảng 
-Cấu trúc tập tin user.json là mỗi key thì lấy luôn địa chỉ email để làm key, value lưu các thông tin email, password
-	và fullname
+- Login Setting Logout:
+	Khi đã đăng nhập rồi mà vẫn cố tình vào trang login thì sẽ tự động redirect sang trang setting
+	Nếu chưa đăng nhập mà vẫn cố tình vào trang setting thì sẽ tự động redirect về trang login
