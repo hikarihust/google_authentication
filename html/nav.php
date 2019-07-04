@@ -21,7 +21,7 @@
 
     $xhtmlMenu = '<ul class="nav navbar-nav">';
     foreach($menus as $key => $menu){
-        if($key == $currentFile) $menu['class'] = "active";
+        if($key === $currentFile) $menu['class'] = "active";
         $xhtmlMenu .= '<li class="'.$menu['class'].'"><a href="'.$menu['link'].'">'.$menu['name'].'</a></li>';  
     }
     $xhtmlMenu .= '</ul>';  
