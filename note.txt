@@ -15,3 +15,16 @@
 	Nếu đã đăng nhập rồi thì không hiển thị Navigation cho Login và Register
 	Chưa đăng nhập thì không hiển thị Setting là logout
 	Kiểm tra nếu mà file đang thực thi nó bằng key nào trong menus thì sẽ active menu đó
+
+===================================== Tìm hiểu Google Authentication =====================================
+
+Keyword: PHP Class for handling Google Authenticator 2-factor authentication
+Cài thêm Extension google authenticator và Authenticator cho Chrome
+Tìm hiểu cách sử dụng Class GoogleAuthenticator
+	createSecret(): Tạo ra 1 chuỗi secret, từ key này thì sẽ có được 1 dãy số, dãy số này sẽ tự động thay đổi sau 30s
+	getQRCodeGoogleUrl(): Thay vì chuỗi trên thì từ 1 chuỗi bất kỳ secretCode cho trước ta có thể sinh ra 1 tấm hình QRcode
+		bằng phương thức getQRCodeGoogleUrl()
+	Để submit được thì giá trị nhập vào ô input phải trùng khớp với giá trị của Extention Authenticator sinh ra
+	-> Thông qua phương thức verifyCode() 2 giá trị $secretCode để sinh ra mã QRcode và giá trị mình nhập vào
+	Giá trị mặc định của tham số thứ 3 $discrepancy trong phương thức verifyCode() là 1, có nghĩa là nó có thể chấp nhận cả mã
+		hiện tại và mã của 30s trước
