@@ -57,3 +57,8 @@ Tìm hiểu cách sử dụng Class GoogleAuthenticator
   Trong trường hợp giá trị setting của người dùng là init có nghĩa là tài khoản đó vừa được tạo
   Nếu giá trị của setting là on hoặc off có nghĩa là người dùng đã scan mã code để Submit rồi
   -> Chỉ khi nào khi setting là init thì mới show ra tấm hình và mã code còn on, off thì không cần show
+  Ỏ màn hình setting khi người dùng thay đổi giá trị setting thành No(off) thì lúc này giá trị của secret phải được xóa
+  	và được thay bởi 1 secret code mới
+  Lúc này secret code thay đổi, lúc này extention Authenticator vẫn lưu giá trị của code secret cũ -> phải đổi lại, do vậy
+  	thì điều kiện hiển thị tấm hình QRcode sẽ là khi giá trị của setting là init hoặc là off để khi đó người dùng thay đổi
+  	giá trị mới cho extention Authenticator

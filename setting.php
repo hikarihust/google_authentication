@@ -20,6 +20,10 @@
       $checkResult = $ga->verifyCode($secretCode, $_POST['code']);
       if ($checkResult) {
         $userInfo['setting'] = $_POST['setting'];
+        if ($userInfo['setting'] === 'off') {
+          $userInfo['secret'] = $ga->createSecret();
+        }
+
         $data[$email] = $userInfo;
         file_put_contents(DATA_USER, json_encode($data));
         $msg = 'Update successful';
@@ -44,7 +48,7 @@
           <div class="panel panel-primary">
             <div class="panel-heading">Image QR Code</div>
             <div class="panel-body">
-              <?php if ($userInfo['setting'] === 'init') { ?>
+              <?php if ($userInfo['setting'] === 'init' || $userInfo['setting'] === 'off') { ?>
                 <div class="qr-code text-center">
                   <img src='<?php echo $qrCodeUrl;?>' />
                 </div>
